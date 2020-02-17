@@ -5,7 +5,8 @@ public class Pirates implements Observer {
 
 
 	@Override
-	public void update(Observable obj, Object arg) {
+	public void update(Observable o, Object arg) {
+		
 		
 		System.out.println("Observer1 is added");
 		

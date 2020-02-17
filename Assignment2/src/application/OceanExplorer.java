@@ -69,7 +69,7 @@ public class OceanExplorer extends Application {
 		loadImage("\\pirateShip.png",2);
 		//loadImage("\\pirateShip.png",3);
 		loadImage("\\ship.png",1);
-		System.out.println(Arrays.deepToString(myGrid));
+		//System.out.println(Arrays.deepToString(myGrid));
 		
 		
 	}
@@ -81,26 +81,25 @@ public class OceanExplorer extends Application {
 			switch(ke.getCode()){
 			case RIGHT:
 				 z = shipCor[0]+1;
-				if(!(myGrid[z][shipCor[1]])) {
+				if(z<10 && myGrid[z][shipCor[1]] == false) {
 				ship.goEast(shipCor);}
 			break;  
 			case LEFT:
 				z = shipCor[0]-1;
-				if(!(myGrid[z][shipCor[1]])) {
+				if(z>-1 && myGrid[z][shipCor[1]] == false) {
 				ship.goWest(shipCor);}
-				//ship.incre();
 			break;
 			case UP:
 				z = shipCor[1]-1;
-				if(!(myGrid[shipCor[0]][z])) {
+				if(z>-1 && myGrid[shipCor[0]][z] == false) {
 				ship.goNorth(shipCor);}
-				ship.incre();
+				//ship.incre();
 			break;
 			case DOWN:
 				z = shipCor[1]+1;
-				if(!(myGrid[shipCor[0]][z])) {
+				if(z<10 && myGrid[shipCor[0]][z] == false) {
 				ship.goSouth(shipCor);}
-				ship.incre();
+				//ship.incre();
 			break;
 			default:
 			break;
@@ -120,6 +119,7 @@ public class OceanExplorer extends Application {
 		imageView.setY(k.y * scale);	
 		anchorPane.getChildren().add(imageView);
 		if(det == 1) {
+			myGrid[k.x][k.y] =false;
 			shipCor[0] = k.x;
 			shipCor[1] = k.y;
 		}

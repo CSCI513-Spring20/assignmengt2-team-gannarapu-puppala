@@ -39,7 +39,7 @@ public class OceanMap {
 			y =rand.nextInt(10);
 		}
 		
-		System.out.println("This is cor"+x+" "+y);
+		//System.out.println("This is cor"+x+" "+y);
 		
 		myGrid[x][y] = true;
 		return new Point(x,y);
