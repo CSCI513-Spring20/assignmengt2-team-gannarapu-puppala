@@ -1,11 +1,13 @@
 package application;
 import java.awt.Point;
+import java.util.*;
 
-public class Ship {
+public class Ship extends Observable{
 	int scale = 50;
 	int xCell =300;
 	int yCell=300;
-	Point currentLocation;
+	
+	
 	
 	
 	public Point goEast(int x,int y) {
@@ -38,5 +40,12 @@ public class Ship {
 		
 		return new Point(xCell,yCell);
 	}
+	 void incre()  
+	    {
+		 setChanged(); 
+	     notifyObservers();
+		 
+	    } 
+
 
 }

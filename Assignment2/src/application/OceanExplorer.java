@@ -23,16 +23,16 @@ public class OceanExplorer extends Application {
 	 int xcor =6;
 	 int ycor =6;
 	 boolean[][] myGrid = new boolean[10][10];
+	 Pirates pirates;
 	 
 	 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		launch(args);
-
+		
+		
 	}
-
-	@Override
+	
 	public void start(Stage oceanStage) throws Exception {
 		anchorPane = new AnchorPane(); 
 		oceanMap = new OceanMap();
@@ -43,6 +43,8 @@ public class OceanExplorer extends Application {
 	    oceanStage.setTitle("Christopher Columbus");
 	    oceanStage.setScene(scene);
 	    oceanStage.show();	
+	    pirates = new Pirates();
+		ship.addObserver(pirates);
 	    startSailing();
 		
 	}
@@ -68,18 +70,20 @@ public class OceanExplorer extends Application {
 			switch(ke.getCode()){
 			case RIGHT:
 				ship.goEast(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
+				ship.incre();
 			break;  
 			case LEFT:
 				ship.goWest(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
-
+				ship.incre();
 			break;
 			case UP:
 				ship.goNorth(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
-
+				ship.incre();
 			break;
 			case DOWN:
 				ship.goSouth(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
- 			break;
+				ship.incre();
+			break;
 			default:
 			break;
 			}
