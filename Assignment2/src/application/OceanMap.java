@@ -31,18 +31,16 @@ public class OceanMap {
 		return myGrid;
 		 }
 	public Point getImageLocation() {	
-		if(firstTime==0) {
+		
+		x =rand.nextInt(10);
+		y =rand.nextInt(10);	
+		while(myGrid[x][y] == true) { 
 			x =rand.nextInt(10);
 			y =rand.nextInt(10);
-			firstTime++;
-			myGrid[x][y] = true;
-			return new Point(x,y);
 		}
 		
-		while(myGrid[x][y]== true) {
-			x =rand.nextInt(10);
-			y =rand.nextInt(10);
-		}
+		System.out.println("This is cor"+x+" "+y);
+		
 		myGrid[x][y] = true;
 		return new Point(x,y);
 	}

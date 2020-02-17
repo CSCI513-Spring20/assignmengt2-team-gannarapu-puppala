@@ -2,6 +2,11 @@ package application;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+
+import java.util.Arrays;
+
+import com.sun.javafx.scene.paint.GradientUtils.Point;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -19,11 +24,16 @@ public class OceanExplorer extends Application {
 	 ImageView imageView; 
 	 OceanMap oceanMap;
 	 Ship ship;
+	 int z;
 	 int scale =50;
-	 int xcor =6;
-	 int ycor =6;
 	 boolean[][] myGrid = new boolean[10][10];
 	 Pirates pirates;
+	 
+	 java.awt.Point k;
+	 int[] shipCor = new int[2];
+	 int[] pirateShipCor1 = new int[2];
+	 int[] pirateShipCor2 = new int[2];
+	 
 	 
 	 
 
@@ -52,13 +62,14 @@ public class OceanExplorer extends Application {
 	private void placingImages() {
 		// TODO Auto-generated method stub
 		for(int k=0;k<5;k++) {
-			loadImage("\\island.jpg");
-		}		
-		loadImage("\\pirateShip.png");
-		loadImage("\\pirateShip.png");
-		loadImage("\\ship.png");
-		loadImage("\\pirateIsland.png");
-		loadImage("\\pirateIsland.png");
+			loadImage("\\island.jpg",0);
+		}
+		//loadImage("\\pirateIsland.png",0);
+		//loadImage("\\pirateIsland.png",0);
+		loadImage("\\pirateShip.png",2);
+		//loadImage("\\pirateShip.png",3);
+		loadImage("\\ship.png",1);
+		System.out.println(Arrays.deepToString(myGrid));
 		
 		
 	}
@@ -69,19 +80,26 @@ public class OceanExplorer extends Application {
 			 public void handle(KeyEvent ke) {
 			switch(ke.getCode()){
 			case RIGHT:
-				ship.goEast(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
-				ship.incre();
+				 z = shipCor[0]+1;
+				if(!(myGrid[z][shipCor[1]])) {
+				ship.goEast(shipCor);}
 			break;  
 			case LEFT:
-				ship.goWest(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
-				ship.incre();
+				z = shipCor[0]-1;
+				if(!(myGrid[z][shipCor[1]])) {
+				ship.goWest(shipCor);}
+				//ship.incre();
 			break;
 			case UP:
-				ship.goNorth(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
+				z = shipCor[1]-1;
+				if(!(myGrid[shipCor[0]][z])) {
+				ship.goNorth(shipCor);}
 				ship.incre();
 			break;
 			case DOWN:
-				ship.goSouth(oceanMap.getImageLocation().x*scale, oceanMap.getImageLocation().y*scale);
+				z = shipCor[1]+1;
+				if(!(myGrid[shipCor[0]][z])) {
+				ship.goSouth(shipCor);}
 				ship.incre();
 			break;
 			default:
@@ -89,20 +107,31 @@ public class OceanExplorer extends Application {
 			}
 			imageView.setX(ship.getShipLocation().x);
 			imageView.setY(ship.getShipLocation().y);
-			oceanMap.setFinal(ship.getShipLocation().x/50,ship.getShipLocation().y/50);
+			//oceanMap.setFinal(ship.getShipLocation().x/50,ship.getShipLocation().y/50);
 			}
 			 });
 			}
 
-	private void loadImage (String url) {
-		Image image = new Image(url,50,50,true,true);
+	private void loadImage (String url,int det) {
+		Image image = new Image(url,48,48,true,true);
 		imageView = new ImageView(image);
-		System.out.println(oceanMap.getImageLocation().x);
-		System.out.println(oceanMap.getImageLocation().y);	
-		imageView.setX(oceanMap.getImageLocation().x * scale);
-		imageView.setY(oceanMap.getImageLocation().y * scale);
-		
+		k = oceanMap.getImageLocation();
+		imageView.setX(k.x * scale);
+		imageView.setY(k.y * scale);	
 		anchorPane.getChildren().add(imageView);
+		if(det == 1) {
+			shipCor[0] = k.x;
+			shipCor[1] = k.y;
+		}
+		else if(det == 2) {
+			pirateShipCor1[0] = k.x;
+			pirateShipCor1[1] = k.y;		
+		}
+		else if(det == 3) {
+			pirateShipCor2[0] = k.x;
+			pirateShipCor2[1] = k.y;		
+		}
+		
 
 	}
 

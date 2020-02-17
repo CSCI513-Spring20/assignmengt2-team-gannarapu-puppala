@@ -4,35 +4,56 @@ import java.util.*;
 
 public class Ship extends Observable{
 	int scale = 50;
-	int xCell =300;
-	int yCell=300;
+	int xCell,yCell;
 	
 	
 	
 	
-	public Point goEast(int x,int y) {
-		if(x!=450) {
-			xCell = x+50; }
-		return new Point(xCell,y);
+	public void goEast(int[] shipCor) {
+		if(shipCor[0]!=9) {
+			xCell  = (shipCor[0] + 1) * scale;
+			shipCor[0] = shipCor[0]+1;
+		}
+		else {
+			xCell  = shipCor[0]*scale;
+		}
+		
+		yCell = shipCor[1] * scale;
 		
 	}
-	public Point goWest(int x,int y) {
-		if(x!=0) {
-			xCell = x-50; }
-		return new Point(xCell,y);
+	public void goWest(int[] shipCor) {
+		if(shipCor[0]!=0) {
+			xCell  = (shipCor[0] - 1) * scale;
+			shipCor[0] = shipCor[0]-1;
+		}
+		else {
+			xCell  = shipCor[0]*scale;
+		}
 		
+		yCell = shipCor[1] * scale;				
+	}
+	public void goNorth(int[] shipCor) {
+		if(shipCor[1]!=0) {
+			yCell  = (shipCor[1] - 1) * scale;
+			shipCor[1] = shipCor[1]-1;
+		}
+		else {
+			yCell  = shipCor[1]*scale;
+		}
+		
+		xCell = shipCor[0] * scale;
 		
 	}
-	public Point goNorth(int x,int y) {
-		if(y!=0) {
-			yCell = y-50; }
-		return new Point(x,yCell);
+	public void goSouth(int[] shipCor) {
+		if(shipCor[1]!=9) {
+			yCell  = (shipCor[1] + 1) * scale;
+			shipCor[1] = shipCor[1]+1;
+		}
+		else {
+			yCell  = shipCor[1]*scale;
+		}
 		
-	}
-	public Point goSouth(int x,int y) {
-		if(y!=450) {
-			yCell = y+50; }
-		return new Point(x,yCell);
+		xCell = shipCor[0] * scale;
 		
 	}
 
