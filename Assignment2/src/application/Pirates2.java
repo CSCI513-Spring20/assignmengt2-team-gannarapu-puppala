@@ -17,7 +17,6 @@ public class Pirates2 implements Observer {
 	@Override
 	public void update(Observable ship, Object arg) {
 		shipLocation= ((Ship)ship).getShipLocation();
-		System.out.println(shipLocation.x+""+shipLocation.y);
 		updatePirateLocation();
 	}
 	
@@ -33,6 +32,20 @@ public class Pirates2 implements Observer {
 			 yCell++;
 		 else
 			 yCell--;
+		 if(myGrid1[xCell][yCell] == true) {
+			 if (((shipLocation.x) - xCell> 0) && myGrid1[xCell-1][yCell]== false) {
+				 xCell--; }
+			 else if(((shipLocation.x) - xCell< 0) && myGrid1[xCell+1][yCell]== false) {
+				 xCell++;
+			 } 
+			 else if(((shipLocation.y) - yCell< 0) && myGrid1[xCell][yCell-1]== false) {
+				 yCell--;
+			 }
+			 else if(((shipLocation.y) - yCell> 0) && myGrid1[xCell][yCell+1]== false) {
+				 yCell++;
+			 }
+			 
+		 }
 		 
 		
 	}

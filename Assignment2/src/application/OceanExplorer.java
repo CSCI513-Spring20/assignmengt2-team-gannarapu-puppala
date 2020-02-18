@@ -129,10 +129,7 @@ public class OceanExplorer extends Application {
 			imageView2.setY(pirates2.getPirateLocation().y*scale);
 			pirates2.storePirateLocation(pirates2.getPirateLocation().x,pirates2.getPirateLocation().y, myGrid);
 			if(ship.getShipLocation().equals(pirates.getPirateLocation()) || ship.getShipLocation().equals(pirates2.getPirateLocation())) {
-				System.out.println("sachindhi");
 				anchorPane.getChildren().add(text);
-				anchorPane.getChildren().add(text2);
-				main(null);
 			}
 			}
 			 });

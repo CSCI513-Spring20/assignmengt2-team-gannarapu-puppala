@@ -21,14 +21,16 @@ public class Ship extends Observable{
 		updateObserver();
 	}
 	public void goWest() {
-		if(xCell>0 && myGrid1[xCell-1][yCell]==false) {
-			xCell--;}
+		if(xCell>0) {
+			if(myGrid1[xCell-1][yCell]==false) {
+			xCell--;}}
 		updateObserver();
 	}
 	public void goNorth() {
-		if(yCell>0 && myGrid1[xCell][yCell-1]==false) {
+		if(yCell>0) {
+			if(myGrid1[xCell][yCell-1]==false) {
 			yCell--;
-		}
+		}}
 		updateObserver();
 		
 	}
