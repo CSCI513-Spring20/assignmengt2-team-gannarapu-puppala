@@ -26,16 +26,13 @@ public class OceanExplorer extends Application {
 	 final int dimensions =10;
 	 final int islandCount =10;
 	 Scene scene;
-	 Scene sceneFinal;
 	 Text text;
-	 Text text2;
 	 Image image;
 	 Stage oceanStage;
 	 ImageView imageView,imageView1,imageView2 ;
 	 OceanMap oceanMap;
 	 Ship ship;
 	 Group root;
-	 int z;
 	 int scale =50;
 	 boolean[][] myGrid = new boolean[10][10];
 	 Pirates pirates = new Pirates();

@@ -3,7 +3,6 @@ import java.awt.Point;
 import java.util.*;
 
 public class Ship extends Observable{
-	int scale = 50;
 	int xCell,yCell;
 	boolean[][] myGrid1 = new boolean[10][10];
 	public void storeShipLocation(int a, int b,boolean[][] myGrid) {
