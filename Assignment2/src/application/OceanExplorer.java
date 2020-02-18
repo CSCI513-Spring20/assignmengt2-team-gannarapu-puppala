@@ -1,3 +1,4 @@
+//Importing Packages
 package application;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class OceanExplorer extends Application {
+	// Initialization
 	 Stage stage = new Stage();
 	 Pane anchorPane;
 	 final int dimensions =10;
@@ -28,7 +30,6 @@ public class OceanExplorer extends Application {
 	 Scene scene;
 	 Text text;
 	 Image image;
-	 Stage oceanStage;
 	 ImageView imageView,imageView1,imageView2 ;
 	 OceanMap oceanMap;
 	 Ship ship;
@@ -37,16 +38,17 @@ public class OceanExplorer extends Application {
 	 boolean[][] myGrid = new boolean[10][10];
 	 Pirates pirates = new Pirates();
 	 Pirates2 pirates2= new Pirates2();
-	 
 	 java.awt.Point k;
 	 int[] shipCor = new int[2];
 	 int[] pirateShipCor1 = new int[2];
 	 int[] pirateShipCor2 = new int[2];
+	 //Initialization Ends
 	
 	 public static void main(String[] args) {
 		launch(args);	
 	}
 	
+	 // Start Method
 	public void start(Stage oceanStage){
 		anchorPane = new AnchorPane(); 
 		oceanMap = new OceanMap();
@@ -74,6 +76,7 @@ public class OceanExplorer extends Application {
 		
 	}
 
+	// This method is used to call loadImages to keep images on Grid
 	private void placingImages() {
 		// TODO Auto-generated method stub
 		for(int k=0;k<5;k++) {
@@ -81,11 +84,10 @@ public class OceanExplorer extends Application {
 		}
 		loadImage("\\pirateShip.png",2);
 		loadImage("\\pirateShip.png",3);
-		loadImage("\\ship.png",1);
-		
-		
+		loadImage("\\ship.png",1);	
 	}
 
+	// This method handles the EvenHandler for Ship movement
 	private void startSailing() {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			 @Override
@@ -122,6 +124,7 @@ public class OceanExplorer extends Application {
 			 });
 			}
 
+	// Used to add images on grid
 	private void loadImage (String url,int det) {
 		Image image = new Image(url,48,48,true,true);	
 		k = oceanMap.getImageLocation();
