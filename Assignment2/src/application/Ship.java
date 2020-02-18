@@ -5,55 +5,38 @@ import java.util.*;
 public class Ship extends Observable{
 	int scale = 50;
 	int xCell,yCell;
+	boolean[][] myGrid1 = new boolean[10][10];
+	public void storeShipLocation(int a, int b,boolean[][] myGrid) {
+		xCell = a;
+		yCell = b;	
+		myGrid1=myGrid;
+	}
 	
 	
 	
-	
-	public void goEast(int[] shipCor) {
-		if(shipCor[0]!=9) {
-			xCell  = (shipCor[0] + 1) * scale;
-			shipCor[0] = shipCor[0]+1;
+	public void goEast() {
+		if(xCell<9 && myGrid1[xCell+1][yCell]==false) {
+			xCell++;
+		}		
+		updateObserver();
+	}
+	public void goWest() {
+		if(xCell>0 && myGrid1[xCell-1][yCell]==false) {
+			xCell--;}
+		updateObserver();
+	}
+	public void goNorth() {
+		if(yCell>0 && myGrid1[xCell][yCell-1]==false) {
+			yCell--;
 		}
-		else {
-			xCell  = shipCor[0]*scale;
-		}
-		
-		yCell = shipCor[1] * scale;
+		updateObserver();
 		
 	}
-	public void goWest(int[] shipCor) {
-		if(shipCor[0]!=0) {
-			xCell  = (shipCor[0] - 1) * scale;
-			shipCor[0] = shipCor[0]-1;
+	public void goSouth() {
+		if(yCell<9 && myGrid1[xCell][yCell+1]==false) {
+			yCell++;
 		}
-		else {
-			xCell  = shipCor[0]*scale;
-		}
-		
-		yCell = shipCor[1] * scale;				
-	}
-	public void goNorth(int[] shipCor) {
-		if(shipCor[1]!=0) {
-			yCell  = (shipCor[1] - 1) * scale;
-			shipCor[1] = shipCor[1]-1;
-		}
-		else {
-			yCell  = shipCor[1]*scale;
-		}
-		
-		xCell = shipCor[0] * scale;
-		
-	}
-	public void goSouth(int[] shipCor) {
-		if(shipCor[1]!=9) {
-			yCell  = (shipCor[1] + 1) * scale;
-			shipCor[1] = shipCor[1]+1;
-		}
-		else {
-			yCell  = shipCor[1]*scale;
-		}
-		
-		xCell = shipCor[0] * scale;
+		updateObserver();
 		
 	}
 
@@ -61,7 +44,7 @@ public class Ship extends Observable{
 		
 		return new Point(xCell,yCell);
 	}
-	 void incre()  
+	 void updateObserver()  
 	    {
 		 setChanged(); 
 	     notifyObservers();

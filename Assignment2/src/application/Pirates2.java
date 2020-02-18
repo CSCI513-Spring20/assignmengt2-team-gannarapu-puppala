@@ -3,7 +3,7 @@ import java.awt.Point;
 import java.util.*;
 
 
-public class Pirates implements Observer {
+public class Pirates2 implements Observer {
 	Point shipLocation;
 	int xCell,yCell;
 	boolean[][] myGrid1 = new boolean[10][10];
@@ -22,8 +22,8 @@ public class Pirates implements Observer {
 	}
 	
 	private void updatePirateLocation() {
-		// TODO Auto-generated method stub
-	 while(myGrid1[xCell][yCell]==true) {
+		System.out.println("Hello, I am here");
+		
 		 if (xCell - (shipLocation.x) < 0)
 			 xCell++;
 		 else
@@ -33,8 +33,7 @@ public class Pirates implements Observer {
 			 yCell++;
 		 else
 			 yCell--;
-			 
-		 }
+		 
 		
 	}
 
