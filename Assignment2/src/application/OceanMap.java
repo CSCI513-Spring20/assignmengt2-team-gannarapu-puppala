@@ -13,11 +13,7 @@ public class OceanMap {
 	boolean[][] myGrid =new boolean[10][10];
 	Random rand = new Random();
 	int x,y;
-	static int firstTime=0;
-	
-
-
-	
+		
 	public boolean[][] getMap(Pane root){
 		for(int x = 0; x < dimensions; x++){
 			 for(int y = 0; y < dimensions; y++){
@@ -40,11 +36,6 @@ public class OceanMap {
 		}	
 		myGrid[x][y] = true;
 		return new Point(x,y);
-	}
-	
-	public void setFinal(int a, int b) {
-		xCell =a;
-		yCell =b;
 	}
 
 

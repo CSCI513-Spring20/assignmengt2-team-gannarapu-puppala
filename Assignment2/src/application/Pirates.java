@@ -44,6 +44,7 @@ public class Pirates implements Observer {
 			 yCell++;
 		 }
 	}
+	//myGrid1[xCell][yCell]=true;
 	}
 	public Point getPirateLocation() {
 		return new Point(xCell,yCell);

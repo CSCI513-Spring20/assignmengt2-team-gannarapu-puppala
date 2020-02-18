@@ -47,7 +47,6 @@ public class OceanExplorer extends Application {
 	 int[] pirateShipCor2 = new int[2];
 	
 	 public static void main(String[] args) {
-		 System.out.println("True");
 		launch(args);	
 	}
 	
@@ -71,15 +70,7 @@ public class OceanExplorer extends Application {
 	    text.setStroke(Color.BLUE);         
 	    text.setText("Game Over"); 
 	    
-	    text2 = new Text();
-	    text2.setText("Press arrow keys to start again");
-	    text2.setX(175); 
-	    text2.setY(275);
-	    text2.setFill(Color.BLACK); 
-	    
-	    
-	    
-	    
+  
 		ship.addObserver(pirates);
 		ship.addObserver(pirates2);
 	    startSailing();
@@ -94,7 +85,6 @@ public class OceanExplorer extends Application {
 		loadImage("\\pirateShip.png",2);
 		loadImage("\\pirateShip.png",3);
 		loadImage("\\ship.png",1);
-		System.out.println(Arrays.deepToString(myGrid));
 		
 		
 	}

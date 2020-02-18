@@ -15,9 +15,10 @@ public class Ship extends Observable{
 	
 	
 	public void goEast() {
-		if(xCell<9 && myGrid1[xCell+1][yCell]==false) {
+		if(xCell<9) {
+			if(myGrid1[xCell+1][yCell]==false) {
 			xCell++;
-		}		
+		}	}	
 		updateObserver();
 	}
 	public void goWest() {
@@ -35,9 +36,10 @@ public class Ship extends Observable{
 		
 	}
 	public void goSouth() {
-		if(yCell<9 && myGrid1[xCell][yCell+1]==false) {
+		if(yCell<9) 
+			{if(myGrid1[xCell][yCell+1]==false) {
 			yCell++;
-		}
+		}}
 		updateObserver();
 		
 	}

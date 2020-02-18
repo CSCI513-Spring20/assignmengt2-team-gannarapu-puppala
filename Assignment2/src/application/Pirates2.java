@@ -21,7 +21,6 @@ public class Pirates2 implements Observer {
 	}
 	
 	private void updatePirateLocation() {
-		System.out.println("Hello, I am here");
 		
 		 if (xCell - (shipLocation.x) < 0)
 			 xCell++;
